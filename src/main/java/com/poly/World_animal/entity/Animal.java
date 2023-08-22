@@ -21,13 +21,13 @@ public class Animal {
     @Column(name = "[status]")
     private String status;
 
-    @Column(name = "description", length = 4096)
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
     @Column(name = "distribution")
     private String distribution ;
 
-    @Column(name = "value", length = 4096)
+    @Column(name = "value", columnDefinition = "TEXT")
     private String value ;
 
     @ManyToOne
