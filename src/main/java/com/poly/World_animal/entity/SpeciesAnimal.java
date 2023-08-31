@@ -28,8 +28,8 @@ public class SpeciesAnimal {
     @Column(name = "distribution")
     private String distribution ;
 
-    @Column(name = "raiting", length = 45)
-    private String raiTing ;
+ /*   @Column(name = "raiting", length = 45)
+    private String raiTing ;*/
 
     @Column(name = "value", columnDefinition = "TEXT")
     private String value ;
