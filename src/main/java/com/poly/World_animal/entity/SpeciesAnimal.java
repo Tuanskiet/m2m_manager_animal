@@ -22,14 +22,14 @@ public class SpeciesAnimal {
     @Column(name = "[name]")
     private String name;
 
-    @Column(name = "description", length = 4096)
-    private String description;
+    @Column(name = "Identify_character")
+    private String identify_character;
 
     @Column(name = "distribution")
     private String distribution ;
 
- /*   @Column(name = "raiting", length = 45)
-    private String raiTing ;*/
+    @Column(name = "raiting", length = 45)
+    private String raiTing ;
 
     @Column(name = "value", columnDefinition = "TEXT")
     private String value ;

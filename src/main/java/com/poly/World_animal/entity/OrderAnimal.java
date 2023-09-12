@@ -24,9 +24,6 @@ public class OrderAnimal {
     @Column(name = "[name]")
     private String name;
 
-    @Column(name = "description", length = 4096)
-    private String description;
-
     @OneToMany(mappedBy = "orderAnimal")
     private List<FamilyAnimal> familyAnimal;
 }

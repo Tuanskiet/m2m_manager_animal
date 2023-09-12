@@ -22,9 +22,6 @@ public class FamilyAnimal {
     @Column(name = "[name]")
     private String name;
 
-    @Column(name = "description", length = 4096)
-    private String description;
-
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private OrderAnimal orderAnimal;
