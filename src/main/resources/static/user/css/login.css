@@ -1,0 +1,30 @@
+.wrapper_login_form{
+    height: 100vh;
+}
+.wrapper_login_form form{
+    width: 340px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+}
+.btn_group button{
+    flex: 40%;
+    margin: 0 5px;
+}
+.btn_login{
+    background-color: #04a73e;
+    color: #2c2c2c;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+}
+.btn_login:hover{
+    background-color: #12c551fd;
+    color: #464444;
+}
+.sign-up_link{
+    color: #230e8d;
+}
+.sign-up_link:hover{
+    color: #04a73e;
+}

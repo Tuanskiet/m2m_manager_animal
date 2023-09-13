@@ -11,7 +11,7 @@ public class HomeController {
     public String viewHomePage(){
         return "/user/index";
     }
-    @GetMapping("/detail")
+    @GetMapping("/details")
     public String viewDetailPage(){
         return "/user/details";
     }
