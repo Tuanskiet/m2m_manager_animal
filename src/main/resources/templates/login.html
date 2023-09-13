@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <head th:replace="fragments :: main_head('tag')"></head>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link th:href="@{user/css/login.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper_login_form d-flex justify-content-center align-items-center">
+            <form th:action="@{/login}" method="post" th:object="${userLogin}">
+
+                <div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+                <h2 class="text-center mb-3">Đăng nhập</h2>
+                <div class="mb-3">
+                    <label for="email_login" class="form-label">Email : </label>
+                    <input type="email" class="form-control" id="email_login" th:field="*{username}" th:value="${userLogin.username}">
+                </div>
+                <div class="mb-3">
+                    <label for="pass_login" class="form-label">Mật khẩu :</label>
+                    <input type="password" class="form-control" id="pass_login" th:field="*{password}" th:value="${userLogin.password}">
+                </div>
+                <div class="btn_group d-flex justify-content-between mb-3">
+                    <button type="submit" class="btn_login">Đăng nhập</button>
+                    <button type="reset" class="btn btn-secondary">Nhập lại</button>
+                </div>
+                <div class="text-center">
+                    <a class="sign-up_link" href="#">Chưa có tài khoản ?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
