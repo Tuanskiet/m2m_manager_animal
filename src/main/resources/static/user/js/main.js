@@ -100,6 +100,7 @@
         $('.hero__categories ul').slideToggle(400);
     });
 
+
     /*--------------------------
         Latest Product Slider
     ----------------------------*/
