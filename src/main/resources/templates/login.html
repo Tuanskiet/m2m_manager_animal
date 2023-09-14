@@ -10,10 +10,10 @@
 
     <link th:href="@{user/css/login.css}" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <div class="wrapper_login_form d-flex justify-content-center align-items-center">
-            <form th:action="@{/login}" method="post" th:object="${userLogin}">
+<body style="background-image: url('img/banner/bannerlogin.png')">
+    <div class="container" >
+        <div class="wrapper_login_form d-flex justify-content-center align-items-center ">
+            <form th:action="@{/login}" method="post" th:object="${userLogin}" class="bg-white">
 
                 <div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
                 <h2 class="text-center mb-3">Đăng nhập</h2>
@@ -30,7 +30,7 @@
                     <button type="reset" class="btn btn-secondary">Nhập lại</button>
                 </div>
                 <div class="text-center">
-                    <a class="sign-up_link" href="#">Chưa có tài khoản ?</a>
+                    <a class="sign-up_link"th:href="@{/register}">Chưa có tài khoản ?</a>
                 </div>
             </form>
         </div>
