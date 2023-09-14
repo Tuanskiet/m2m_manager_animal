@@ -24,4 +24,13 @@ public class UserAppServiceImpl implements UserAppService {
         }
         return MessageError.USER_NOT_EXIST;
     }
+
+    @Override
+    public String register(UserApp userApp) {
+        Optional<UserApp> userAppcheck = userAppRepo.findByEmail(userApp.getEmail());
+        if(userAppcheck.isPresent()){
+            return MessageError.EMAIL_ALREADY_EXITS;
+        }
+        return MessageError.USER_REGISTER_SUCCESS;
+    }
 }

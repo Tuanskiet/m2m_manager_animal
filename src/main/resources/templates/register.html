@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập</title>
+    <head th:replace="fragments :: main_head('tag')"></head>
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link th:href="@{user/css/login.css}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper_login_form d-flex justify-content-center align-items-center">
+            <form th:action="@{/register}" method="post" th:object="${userRegister}">
+
+                <div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
+                <div th:if="${message != null}" class="alert alert-success" role="alert" th:text="${message}"></div>
+                <h2 class="text-center mb-3">Đăng Ký</h2>
+                <div class="mb-3">
+                    <label for="email_login" class="form-label">Email : </label>
+                    <input type="email" class="form-control" id="email_login" th:field="*{email}" th:value="${userRegister.email}">
+                </div>
+                <div class="mb-3">
+                    <label for="pass_login" class="form-label">Mật khẩu :</label>
+                    <input type="password" class="form-control" id="pass_login" th:field="*{password}" th:value="${userRegister.password}">
+                </div>
+                <div class="mb-3">
+                    <label for="repeatpass_login" class="form-label">Xác nhận mật khẩu :</label>
+                    <input type="password" class="form-control" id="repeatpass_login" name="repeatpass_login">
+                </div>
+                <div class="mb-3">
+                    <label for="full_name" class="form-label">Họ và tên :</label>
+                    <input type="text" class="form-control" id="full_name" th:field="*{fullName}" th:value="${userRegister.fullName}">
+                </div>
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Điện thoại :</label>
+                    <input type="text" class="form-control" id="phone" th:field="*{phoneNumber}" th:value="${userRegister.phoneNumber}">
+                </div>
+                <div class="btn_group d-flex justify-content-between mb-3">
+                    <button type="submit" class="btn_login">Đăng Ký</button>
+                    <button type="reset" class="btn btn-secondary">Nhập lại</button>
+                </div>
+                <div class="text-center">
+                    <a class="sign-up_link" th:href="@{/login}">Đăng Nhập?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

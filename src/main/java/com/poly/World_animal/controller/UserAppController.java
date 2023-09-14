@@ -1,6 +1,7 @@
 package com.poly.World_animal.controller;
 
 
+import com.poly.World_animal.contansts.MessageError;
 import com.poly.World_animal.dto.UserLoginDto;
 import com.poly.World_animal.entity.UserApp;
 import com.poly.World_animal.service.UserAppService;
@@ -31,5 +32,30 @@ public class UserAppController {
         model.addAttribute("userLogin", userLoginDto);
         model.addAttribute("error", result);
         return "login";
+    }
+
+    @GetMapping("/register")
+    public String viewPageRegister(Model model){
+//        model.addAttribute("error", "");
+        model.addAttribute("userRegister", new UserApp());
+        return "register";
+    }
+
+    @PostMapping("/register")
+    public String doRegister(@ModelAttribute(name = "userRegister")UserApp userApp,@RequestParam("repeatpass_login")String repeat_pass,
+                          Model model){
+        String result = userAppService.register(userApp);
+//        String repeat_pass = (String) model.getAttribute("repeatpass_login");
+        if(repeat_pass.equals(userApp.getPassword())){
+            if(result.equals(MessageError.USER_REGISTER_SUCCESS)){
+                model.addAttribute("message",MessageError.USER_REGISTER_SUCCESS);
+                return "register";
+            }else{
+                model.addAttribute("error", result);
+                return "register";
+            }
+        }
+        model.addAttribute("error","Mật khẩu không khớp");
+        return "register";
     }
 }
