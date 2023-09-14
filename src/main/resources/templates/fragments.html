@@ -21,6 +21,7 @@
   <link rel="stylesheet" th:href="@{user/css/slicknav.min.css}" type="text/css">
   <link rel="stylesheet" th:href="@{user/css/style.css}" type="text/css">
   <link rel="stylesheet" th:href="@{user/css/common.css}" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -54,18 +55,18 @@
         </ul>
       </div>
       <div class="header__top__right__auth">
-        <a href="#"><i class="fa fa-user"></i> Login</a>
+        <a th:href="@{/login}"><i class="fa-regular fa-user"></i> Login</a>
       </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
       <ul>
-        <li class="active"><a th:href="@{/}">Home</a></li>
-        <li><a href="#">Shop</a></li>
+        <li class="active"><a th:href="@{/index}">Home</a></li>
+<!--        <li><a href="#">Shop</a></li>-->
         <li><a href="#">Pages</a>
           <ul class="header__menu__dropdown">
-            <li><a href="details.html">Shop Details</a></li>
-            <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-            <li><a href="./checkout.html">Check Out</a></li>
+            <li><a href="details.html">Pages 1</a></li>
+            <li><a href="./shoping-cart.html">Pages 2</a></li>
+            <li><a href="./checkout.html">Pages 3</a></li>
             <li><a  th:href="@{/blog-detail}">Blog Details</a></li>
           </ul>
         </li>
@@ -75,15 +76,14 @@
     </nav>
     <div id="mobile-menu-wrap"></div>
     <div class="header__top__right__social">
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="#"><i class="fa fa-pinterest-p"></i></a>
+<!--      <a href="#"><i class="fa fa-facebook"></i></a>-->
+<!--      <a href="#"><i class="fa fa-twitter"></i></a>-->
+<!--      <a href="#"><i class="fa fa-linkedin"></i></a>-->
+<!--      <a href="#"><i class="fa fa-pinterest-p"></i></a>-->
     </div>
     <div class="humberger__menu__contact">
       <ul>
-        <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-        <li>Free Shipping for all Order of $99</li>
+        <li><i class="fa fa-envelope"></i> baovedongvat@gmail.com</li>
       </ul>
     </div>
   </div>
@@ -96,18 +96,17 @@
           <div class="col-lg-6 col-md-6">
             <div class="header__top__left">
               <ul>
-                <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                <li>Free Shipping for all Order of $99</li>
+                <li><i class="fa fa-envelope"></i> baovedongvat1@gmail.com</li>
               </ul>
             </div>
           </div>
           <div class="col-lg-6 col-md-6">
             <div class="header__top__right">
               <div class="header__top__right__social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
-                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                <a href="#"><i class="fa-brands fa-facebook" style="color: #2261ce;"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter" style="color: #397ef3;"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#"><i class="fa-brands fa-pinterest" style="color: #d82c2c;"></i></a>
               </div>
               <div class="header__top__right__language">
                 <img src="img/language.png" alt="">
@@ -119,7 +118,7 @@
                 </ul>
               </div>
               <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a th:href="@{/login}"><i class="fa-regular fa-user"></i> Login</a>
               </div>
             </div>
           </div>
@@ -152,13 +151,13 @@
           </nav>
         </div>
         <div class="col-lg-3">
-          <div class="header__cart">
-            <ul>
-              <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-              <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
-            </ul>
-            <div class="header__cart__price">item: <span>$150.00</span></div>
-          </div>
+<!--          <div class="header__cart">-->
+<!--            <ul>-->
+<!--              <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>-->
+<!--              <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>-->
+<!--            </ul>-->
+<!--            <div class="header__cart__price">item: <span>$150.00</span></div>-->
+<!--          </div>-->
         </div>
       </div>
       <div class="humberger__open">
@@ -309,7 +308,237 @@
   <script th:src="@{user/js/jquery.slicknav.js}"></script>
   <script th:src="@{user/js/mixitup.min.js}"></script>
   <script th:src="@{user/js/owl.carousel.min.js}"></script>
-  <script th:src="@{user/js/main.js}"></script>
+  <script>
+    /*  ---------------------------------------------------
+    Template Name: Ogani
+    Description:  Ogani eCommerce  HTML Template
+    Author: Colorlib
+    Author URI: https://colorlib.com
+    Version: 1.0
+    Created: Colorlib
+---------------------------------------------------------  */
+
+    'use strict';
+
+    (function ($) {
+
+      /*------------------
+          Preloader
+      --------------------*/
+      $(window).on('load', function () {
+        $(".loader").fadeOut();
+        $("#preloder").delay(200).fadeOut("slow");
+
+        /*------------------
+            Gallery filter
+        --------------------*/
+        $('.featured__controls li').on('click', function () {
+          $('.featured__controls li').removeClass('active');
+          $(this).addClass('active');
+        });
+        if ($('.featured__filter').length > 0) {
+          var containerEl = document.querySelector('.featured__filter');
+          var mixer = mixitup(containerEl);
+        }
+      });
+
+      /*------------------
+          Background Set
+      --------------------*/
+      $('.set-bg').each(function () {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
+      });
+
+      //Humberger Menu
+      $(".humberger__open").on('click', function () {
+        $(".humberger__menu__wrapper").addClass("show__humberger__menu__wrapper");
+        $(".humberger__menu__overlay").addClass("active");
+        $("body").addClass("over_hid");
+      });
+
+      $(".humberger__menu__overlay").on('click', function () {
+        $(".humberger__menu__wrapper").removeClass("show__humberger__menu__wrapper");
+        $(".humberger__menu__overlay").removeClass("active");
+        $("body").removeClass("over_hid");
+      });
+
+      /*------------------
+          Navigation
+      --------------------*/
+      $(".mobile-menu").slicknav({
+        prependTo: '#mobile-menu-wrap',
+        allowParentLinks: true
+      });
+
+      /*-----------------------
+          Categories Slider
+      ------------------------*/
+      $(".categories__slider").owlCarousel({
+        loop: true,
+        margin: 0,
+        items: 4,
+        dots: false,
+        nav: true,
+        navText: ["<span class='fa fa-angle-left'><span/>", "<span class='fa fa-angle-right'><span/>"],
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn',
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true,
+        responsive: {
+
+          0: {
+            items: 1,
+          },
+
+          480: {
+            items: 2,
+          },
+
+          768: {
+            items: 3,
+          },
+
+          992: {
+            items: 4,
+          }
+        }
+      });
+
+
+      $('.unique_class .hero__categories__all').on('click', function(){
+        $(this).next('ul').slideToggle(400);
+
+      });
+
+      $('.order_family .hero__categories__all').on('click', function(){
+        $('.order_family ul').slideToggle(400);
+      });
+
+      /*--------------------------
+          Latest Product Slider
+      ----------------------------*/
+      $(".latest-product__slider").owlCarousel({
+        loop: true,
+        margin: 0,
+        items: 1,
+        dots: false,
+        nav: true,
+        navText: ["<span class='fa fa-angle-left'><span/>", "<span class='fa fa-angle-right'><span/>"],
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true
+      });
+
+      /*-----------------------------
+          Product Discount Slider
+      -------------------------------*/
+      $(".product__discount__slider").owlCarousel({
+        loop: true,
+        margin: 0,
+        items: 3,
+        dots: true,
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true,
+        responsive: {
+
+          320: {
+            items: 1,
+          },
+
+          480: {
+            items: 2,
+          },
+
+          768: {
+            items: 2,
+          },
+
+          992: {
+            items: 3,
+          }
+        }
+      });
+
+      /*---------------------------------
+          Product Details Pic Slider
+      ----------------------------------*/
+      $(".product__details__pic__slider").owlCarousel({
+        loop: true,
+        margin: 20,
+        items: 4,
+        dots: true,
+        smartSpeed: 1200,
+        autoHeight: false,
+        autoplay: true
+      });
+
+      /*-----------------------
+          Price Range Slider
+      ------------------------ */
+      var rangeSlider = $(".price-range"),
+              minamount = $("#minamount"),
+              maxamount = $("#maxamount"),
+              minPrice = rangeSlider.data('min'),
+              maxPrice = rangeSlider.data('max');
+      rangeSlider.slider({
+        range: true,
+        min: minPrice,
+        max: maxPrice,
+        values: [minPrice, maxPrice],
+        slide: function (event, ui) {
+          minamount.val('$' + ui.values[0]);
+          maxamount.val('$' + ui.values[1]);
+        }
+      });
+      minamount.val('$' + rangeSlider.slider("values", 0));
+      maxamount.val('$' + rangeSlider.slider("values", 1));
+
+      /*--------------------------
+          Select
+      ----------------------------*/
+      $("select").niceSelect();
+
+      /*------------------
+          Single Product
+      --------------------*/
+      $('.product__details__pic__slider img').on('click', function () {
+
+        var imgurl = $(this).data('imgbigurl');
+        var bigImg = $('.product__details__pic__item--large').attr('src');
+        if (imgurl != bigImg) {
+          $('.product__details__pic__item--large').attr({
+            src: imgurl
+          });
+        }
+      });
+
+      /*-------------------
+          Quantity change
+      --------------------- */
+      var proQty = $('.pro-qty');
+      proQty.prepend('<span class="dec qtybtn">-</span>');
+      proQty.append('<span class="inc qtybtn">+</span>');
+      proQty.on('click', '.qtybtn', function () {
+        var $button = $(this);
+        var oldValue = $button.parent().find('input').val();
+        if ($button.hasClass('inc')) {
+          var newVal = parseFloat(oldValue) + 1;
+        } else {
+          // Don't allow decrementing below zero
+          if (oldValue > 0) {
+            var newVal = parseFloat(oldValue) - 1;
+          } else {
+            newVal = 0;
+          }
+        }
+        $button.parent().find('input').val(newVal);
+      });
+
+    })(jQuery);
+  </script>
 </th:block>
 </body>
 </html>
