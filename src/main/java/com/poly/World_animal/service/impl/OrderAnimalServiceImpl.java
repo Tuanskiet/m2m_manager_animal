@@ -7,14 +7,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service //khai bao để nhận biết tầng sử lý bussines
+@Service //khai bao để nhận biết tầng sử lý logic
 public class OrderAnimalServiceImpl implements OrderAnimalService {
 
      @Autowired
-    OrderAnimalRepo orderAnimalRepo ;
+    OrderAnimalRepo orderAnimalRepo  ;
+
     @Override
     public List<OrderAnimal> findAll() {
+
         return orderAnimalRepo.findAll();
     }
+
 }
 

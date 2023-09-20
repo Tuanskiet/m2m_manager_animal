@@ -23,7 +23,8 @@ public class UserAppController {
         return "login";
     }
     @PostMapping("/login")
-    public String doLogin(@ModelAttribute(name = "userLogin")UserLoginDto userLoginDto,
+    public String doLogin(
+            @ModelAttribute(name = "userLogin")UserLoginDto userLoginDto,
                           Model model){
         String result = userAppService.doLogin(userLoginDto.getUsername(), userLoginDto.getPassword());
         if(result.equals("OK")){
@@ -49,6 +50,7 @@ public class UserAppController {
         if(repeat_pass.equals(userApp.getPassword())){
             if(result.equals(MessageError.USER_REGISTER_SUCCESS)){
                 model.addAttribute("message",MessageError.USER_REGISTER_SUCCESS);
+                model.addAttribute("userRegister", new UserApp());
                 return "register";
             }else{
                 model.addAttribute("error", result);

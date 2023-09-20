@@ -125,6 +125,10 @@
             <div class="row featured__filter">
                 <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat" th:each="species : ${listSpeciesAnimals}">
                     <div  class="featured__item">
+                        <div th:each="item : ${#strings.arraySplit(species.image, ',')}">
+                            <div th:if="${itemStat.index == 0}" th:text="${item}"></div>
+                        </div>
+
                         <div class="featured__item__pic set-bg"  th:attr="data-setbg=@{http://localhost:9999/upload/orther/__${species.familyAnimal.orderAnimal.id}__/family/__${species.familyAnimal.id}__/__${species.image}__}">
                             <ul class="featured__item__pic__hover">
                                 <li><a th:href="@{/detail}" ><i class="fa fa-heart"></i></a></li>
@@ -134,9 +138,9 @@
                         </div>
                         <div class="featured__item__text">
                             <h6 ><a href="#" th:text="${species.getName()}"></a></h6>
-                            <h6 th:text="'orther id:' + ${species.familyAnimal.orderAnimal.id}"></h6>
-                            <h6 th:text="'family id:' + ${species.familyAnimal.id}"></h6>
-                            <h5 th:text="'species id:' + ${species.id}"></h5>
+<!--                            <h6 th:text="'orther id:' + ${species.familyAnimal.orderAnimal.id}"></h6>-->
+<!--                            <h6 th:text="'family id:' + ${species.familyAnimal.id}"></h6>-->
+<!--                            <h5 th:text="'species id:' + ${species.id}"></h5>-->
                         </div>
                     </div>
                 </div>

@@ -31,6 +31,7 @@ public class UserAppServiceImpl implements UserAppService {
         if(userAppcheck.isPresent()){
             return MessageError.EMAIL_ALREADY_EXITS;
         }
+        userAppRepo.save(userApp);
         return MessageError.USER_REGISTER_SUCCESS;
     }
 }

@@ -22,15 +22,16 @@ import java.util.List;
 @Controller
 public class HomeController {
     @Autowired
-    OrderAnimalService orderAnimalService;
+    OrderAnimalService orderAnimalService ;
     @Autowired
     FamilyAnimalService familyAnimalService;
     @Autowired
     SpeciesAnimalService speciesAnimalService;
     @GetMapping({"/", "/index"})
-    public String viewHomePage(Model model, @RequestParam(defaultValue = "0", value = "page",required = false) int page){
-
+    // hàm
+    public String viewHomePage(Model model,@RequestParam(defaultValue = "0", value = "page",required = false)int page){
         List<OrderAnimal> listOrderAnimals = orderAnimalService.findAll();
+
         model.addAttribute("listOrderAnimals",listOrderAnimals);
         model.addAttribute("sizeOrder",listOrderAnimals.size());
 
@@ -47,7 +48,6 @@ public class HomeController {
         model.addAttribute("currentPage",page);
         model.addAttribute("totalPages",totalPage);
         return "/user/index";
-
     }
     @GetMapping("/details")
     public String viewDetailPage(){
@@ -66,4 +66,6 @@ public class HomeController {
     public String viewBlogDetailsPage(){
         return "/user/blog-details";
     }
+
+
 }

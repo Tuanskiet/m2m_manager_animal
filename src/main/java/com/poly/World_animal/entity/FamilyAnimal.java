@@ -1,6 +1,7 @@
 package com.poly.World_animal.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,6 +24,7 @@ public class FamilyAnimal {
     private String name;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private OrderAnimal orderAnimal;
 }
