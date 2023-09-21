@@ -8,4 +8,5 @@ import org.springframework.data.domain.Pageable;
 public interface SpeciesAnimalService {
    Page<SpeciesAnimal> findAll(Pageable page);
 
+    Page<SpeciesAnimal> findByName(String name, Pageable pageable);
 }

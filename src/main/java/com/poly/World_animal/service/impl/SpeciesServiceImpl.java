@@ -22,4 +22,9 @@ public class SpeciesServiceImpl implements SpeciesAnimalService {
     public Page<SpeciesAnimal> findAll(Pageable page) {
         return speciesAnimalRepo.findAll(page);
     }
+
+    @Override
+    public Page<SpeciesAnimal> findByName(String name, Pageable pageable) {
+        return speciesAnimalRepo.findByNameContaining(name, pageable);
+    }
 }
