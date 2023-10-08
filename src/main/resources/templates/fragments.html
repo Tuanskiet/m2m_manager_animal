@@ -55,7 +55,10 @@
         </ul>
       </div>
       <div class="header__top__right__auth">
-        <a th:href="@{/login}"><i class="fa-regular fa-user"></i> Login</a>
+        <a th:if="${session.myAccount == null}"
+           th:href="@{/login}"><i class="fa-regular fa-user"></i> Login</a>
+        <a th:if="${session.myAccount != null}"
+           th:href="@{/info}"><i class="fa-regular fa-user"></i>Hello [[${session.myAccount.fullName}]]</a>
       </div>
     </div>
     <nav class="humberger__menu__nav mobile-menu">
@@ -118,7 +121,10 @@
                 </ul>
               </div>
               <div class="header__top__right__auth">
-                <a th:href="@{/login}"><i class="fa-regular fa-user"></i> Login</a>
+                <a th:if="${session.myAccount == null}"
+                   th:href="@{/login}"><i class="fa-regular fa-user"></i> Login</a>
+                <a th:if="${session.myAccount != null}"
+                   th:href="@{/info}"><i class="fa-regular fa-user"></i>[[${session.myAccount.fullName}]]</a>
               </div>
             </div>
           </div>

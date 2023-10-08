@@ -23,6 +23,10 @@ public class UserApp {
     private String email;
     private String password;
     private String fullName;
+
+    @Column(length = 1024)
+    private String avatar;
+
     private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
