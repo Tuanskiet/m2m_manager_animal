@@ -31,38 +31,39 @@
                     </div>
                 </div>
 
-                <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span  class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
-                            </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>+65 11.188.888</h5>
-                                <span>support 24/7 time</span>
+<!--                <div class="col-lg-9">-->
+<!--                    <div class="hero__search">-->
+<!--                        <div class="hero__search__form">-->
+<!--                            <form th:action="@{/}" method="get">-->
+<!--                                <div class="hero__search__categories">-->
+<!--                                    All Categories-->
+<!--                                    <span  class="arrow_carrot-down"></span>-->
+<!--                                    <span class="arrow_carrot-down"></span>-->
+<!--                                </div>-->
+<!--                                <input type="text" placeholder="Nhập tên động vật ..." name="keyword" th:value="${keyword}">-->
+<!--                                <button type="submit" class="site-btn">Tìm kiếm</button>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                        <div class="hero__search__phone">-->
+<!--                            <div class="hero__search__phone__icon">-->
+<!--                                <i class="fa fa-phone"></i>-->
+<!--                            </div>-->
+<!--                            <div class="hero__search__phone__text">-->
+<!--                                <h5>+65 11.188.888</h5>-->
+<!--                                <span>support 24/7 time</span>-->
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hero__item set-bg" data-setbg="img/hero/banner.png">
-                        <div class="hero__text">
-<!--                            <span>FRUIT FRESH</span>-->
-<!--                            <h2>Vegetable <br />100% Organic</h2>-->
-<!--                            <p>Free Pickup and Delivery Available</p>-->
-<!--                            <a href="#" class="primary-btn">SHOP NOW</a>-->
-                        </div>
-                    </div>
-                </div>
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="hero__item set-bg" data-setbg="img/hero/banner.png">-->
+<!--                        <div class="hero__text">-->
+<!--&lt;!&ndash;                            <span>FRUIT FRESH</span>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <h2>Vegetable <br />100% Organic</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <p>Free Pickup and Delivery Available</p>&ndash;&gt;-->
+<!--&lt;!&ndash;                            <a href="#" class="primary-btn">SHOP NOW</a>&ndash;&gt;-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </section>
@@ -148,8 +149,8 @@
                         </div>
                     </div>
                 </div>
-                <nav aria-label="...">
-                    <ul class="pagination">
+                <nav aria-label="..." style=" width: 100%;" >
+                    <ul class="pagination justify-content-center">
                         <li th:unless="${currentPage == 0}" class="page-item disabled">
                             <span class="page-link"><a th:href="@{/index?page=__${currentPage - 1}__}" th:name="page">Previous</a></span>
                         </li>
@@ -170,15 +171,26 @@
     <!-- Banner Begin -->
     <div class="banner">
         <div class="container">
+            <div class="section-title">
+                <h2>Tin tức</h2>
+            </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img style="height: 262px; width: 585px" src="img/banner/banner-1.jpg" alt="">
+                        <img style="height: 262px; width: 585px" src="" th:alt="${user}">
+                    </div>
+                    <div class="banner_info mt-3">
+                        <h4 class="news__name">Làn sóng bài thịt chó từ Mỹ, Anh, Hàn Quốc đến Đông...</h4>
+                        <p class="news__des">Làn sóng phản đối thịt chó đang diễn ra ở nhiều nơi trên thế giới, kể cả ở các nước châu Á. Tại Đông Nam...</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img style="height: 262px; width: 585px"  src="img/banner/banner-2.jpg" alt="">
+                        <img style="height: 262px; width: 585px"  src="https://www.baovedongvatvn.com/uploads/plugin/news/67/h-vi-n-m-thong-qua-d-lu-t-v-c-m-n-th-t-cho-meo-dieu-gi-xay-ra-thuong-vien-ha-vien-my-dspl-xosa.jpg" alt="">
+                    </div>
+                    <div class="banner_info mt-3">
+                        <h4 class="news__name">Hạ viện Mỹ thông qua dự luật về cấm ăn thịt chó,...</h4>
+                        <p class="news__des">Các nghị sĩ Mỹ nhất trí với dự luật cấm giết mổ và tiêu thụ thịt chó, mèo, đồng thời kêu gọi các nước...</p>
                     </div>
                 </div>
             </div>

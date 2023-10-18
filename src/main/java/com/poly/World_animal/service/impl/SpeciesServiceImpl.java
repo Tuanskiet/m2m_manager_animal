@@ -38,4 +38,7 @@ public class SpeciesServiceImpl implements SpeciesAnimalService {
     public void delete(SpeciesAnimal speciesAnimal) {
         speciesAnimalRepo.delete(speciesAnimal);
     }
+    public Page<SpeciesAnimal> findByName(String name, Pageable pageable) {
+        return speciesAnimalRepo.findByNameContaining(name, pageable);
+    }
 }

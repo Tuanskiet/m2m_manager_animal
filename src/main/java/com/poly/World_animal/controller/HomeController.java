@@ -36,7 +36,9 @@ public class HomeController {
     SessionService sessionService;
     @GetMapping({"/", "/index"})
     // hàm
-    public String viewHomePage(Model model,@RequestParam(defaultValue = "0", value = "page",required = false)int page){
+    public String viewHomePage(Model model,
+                               @RequestParam(defaultValue = "0", value = "page",required = false)int page,
+                               @RequestParam(defaultValue = "", value = "keyword",required = false)String keyword){
         List<OrderAnimal> listOrderAnimals = orderAnimalService.findAll();
 
         model.addAttribute("listOrderAnimals",listOrderAnimals);
@@ -47,7 +49,14 @@ public class HomeController {
         model.addAttribute("sizeFamily",listFamilyAnimals.size());
 
         Pageable pageable = PageRequest.of(page,8 );
-        Page<SpeciesAnimal> speciesAnimals = speciesAnimalService.findAll(pageable);
+        Page<SpeciesAnimal> speciesAnimals = null;
+
+        if(!keyword.equals("")){
+            speciesAnimals = speciesAnimalService.findByName(keyword, pageable);
+        }else{
+            speciesAnimals = speciesAnimalService.findAll(pageable);
+        }
+
         List<SpeciesAnimal>speciesAnimalList = speciesAnimals.getContent();
         int totalPage = speciesAnimals.getSize();
 

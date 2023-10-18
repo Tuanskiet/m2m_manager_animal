@@ -14,4 +14,5 @@ public interface SpeciesAnimalService {
 
    void delete(SpeciesAnimal speciesAnimal);
 
+    Page<SpeciesAnimal> findByName(String name, Pageable pageable);
 }

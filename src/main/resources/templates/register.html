@@ -10,30 +10,72 @@
 
     <link th:href="@{user/css/login.css}" rel="stylesheet">
 </head>
+<style>
+    .avatar{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.avatar label{
+    position: relative;
+    cursor: pointer;
+}
+.avatar input{
+    display: none;
+}
+.img_avatar{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+</style>
 <body style="background-image: url('img/banner/bannerlogin.png')">
-    <div class="container">
-        <div class="wrapper_login_form d-flex justify-content-center align-items-center">
-            <form th:action="@{/register}" method="post" th:object="${userRegister}" class="bg-white">
+    <div class="container mt-4">
+        <div class="d-flex justify-content-center align-items-center">
+            <form  th:action="@{/register}" method="post"
+                   th:object="${userRegister}"
+                   enctype="multipart/form-data"
+                   class="bg-white p-3">
 
                 <div th:if="${error != null}" class="alert alert-danger" role="alert" th:text="${error}"></div>
                 <div th:if="${message != null}" class="alert alert-success" role="alert" th:text="${message}"></div>
                 <h2 class="text-center mb-3">Đăng Ký</h2>
-                <div class="mb-3">
-                    <label for="email_login" class="form-label">Email : </label>
-                    <input type="email" class="form-control" id="email_login" th:field="*{email}" th:value="${userRegister.email}">
+                <div class="avatar">
+                    <img class="img_avatar"
+                         th:src="${userRegister.avatar != null ?  userRegister.avatar : '/img/default_user.jpeg'}" id="imageResult">
+                    <div>
+                        <label for="upload_avatar" id="upload-label">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pen" viewBox="0 0 16 16">
+                                <path d="m13.498.795.149-.149a1.207 1.207 0 1 1 1.707 1.708l-.149.148a1.5 1.5 0 0 1-.059 2.059L4.854 14.854a.5.5 0 0 1-.233.131l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .131-.232l9.642-9.642a.5.5 0 0 0-.642.056L6.854 4.854a.5.5 0 1 1-.708-.708L9.44.854A1.5 1.5 0 0 1 11.5.796a1.5 1.5 0 0 1 1.998-.001zm-.644.766a.5.5 0 0 0-.707 0L1.95 11.756l-.764 3.057 3.057-.764L14.44 3.854a.5.5 0 0 0 0-.708l-1.585-1.585z"/>
+                            </svg>
+                            <span>Chọn ảnh</span>
+                        </label>
+                        <input type="file" name="image"  id="upload_avatar" >
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="pass_login" class="form-label">Mật khẩu :</label>
-                    <input type="password" class="form-control" id="pass_login" th:field="*{password}" th:value="${userRegister.password}">
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="email_login" class="form-label">Email : </label>
+                        <input type="email" class="form-control" id="email_login" th:field="*{email}" th:value="${userRegister.email}">
+                    </div>
+                    <div class="col">
+                        <label for="full_name" class="form-label">Họ và tên :</label>
+                        <input type="text" class="form-control" id="full_name" th:field="*{fullName}" th:value="${userRegister.fullName}">
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="repeatpass_login" class="form-label">Xác nhận mật khẩu :</label>
-                    <input type="password" class="form-control" id="repeatpass_login" name="repeatpass_login">
+
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="pass_login" class="form-label">Mật khẩu :</label>
+                        <input type="password" class="form-control" id="pass_login" th:field="*{password}" th:value="${userRegister.password}">
+                    </div>
+                    <div class="col">
+                        <label for="repeatpass_login" class="form-label">Xác nhận mật khẩu :</label>
+                        <input type="password" class="form-control" id="repeatpass_login" name="repeatpass_login">
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="full_name" class="form-label">Họ và tên :</label>
-                    <input type="text" class="form-control" id="full_name" th:field="*{fullName}" th:value="${userRegister.fullName}">
-                </div>
+
                 <div class="mb-3">
                     <label for="phone" class="form-label">Điện thoại :</label>
                     <input type="text" class="form-control" id="phone" th:field="*{phoneNumber}" th:value="${userRegister.phoneNumber}">
@@ -48,5 +90,38 @@
             </form>
         </div>
     </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+        var input = document.getElementById( 'upload_avatar' );
+        var infoArea = document.getElementById( 'upload-label' );
+
+        input.addEventListener( 'change', showFileName );
+        function showFileName( event ) {
+          var input = event.srcElement;
+          var fileName = input.files[0].name;
+          infoArea.textContent = 'File name: ' + fileName;
+        }
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imageResult')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $(function () {
+            $('#upload_avatar').on('change', function () {
+                readURL(input);
+            });
+        });
+
+    </script>
 </body>
 </html>
