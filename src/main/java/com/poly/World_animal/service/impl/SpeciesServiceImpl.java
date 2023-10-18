@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SpeciesServiceImpl implements SpeciesAnimalService {
@@ -21,5 +22,20 @@ public class SpeciesServiceImpl implements SpeciesAnimalService {
     @Override
     public Page<SpeciesAnimal> findAll(Pageable page) {
         return speciesAnimalRepo.findAll(page);
+    }
+
+    @Override
+    public Optional<SpeciesAnimal> findById(Integer id) {
+        return speciesAnimalRepo.findById(id);
+    }
+
+    @Override
+    public SpeciesAnimal save(SpeciesAnimal speciesAnimal) {
+        return speciesAnimalRepo.save(speciesAnimal);
+    }
+
+    @Override
+    public void delete(SpeciesAnimal speciesAnimal) {
+        speciesAnimalRepo.delete(speciesAnimal);
     }
 }

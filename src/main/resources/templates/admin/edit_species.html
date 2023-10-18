@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="main_head(condition)" th:remove="${tag}">
+    <meta charset="UTF-8">
+    <meta name="description" content="Ogani Template">
+    <meta name="keywords" content="Ogani, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ogani | Template</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- Thư viện SweetAlert -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="row pt-4">
+        <div class="alert alert-primary" role="alert" th:if="${message}">
+            <span th:text="${message}"></span>
+        </div>
+        <div class="col-md-2 bg-primary">
+
+        </div>
+
+        <div class="col-md-8 ">
+            <div class="container p-8">
+
+                <div class="row">
+                    <form method="post" action="/edit_species" class="row g-3" th:object="${currentSpeciesAnimals}">
+                        <input type="hidden" th:field="*{id}">
+                        <div class="col-md-6">
+                            <label for="name" class="form-label">Tên</label>
+                            <input type="text" class="form-control" id="name" th:field="*{name}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="raiting" class="form-label">Tình trạng</label>
+                            <input type="text" class="form-control" id="raiting" th:field="*{raiTing}">
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="identify_character" class="form-label">Đặc điểm nhận dạng</label>
+                                <textarea class="form-control" id="identify_character" rows="3"
+                                    th:field="*{identify_character}"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="biology_ecology" class="form-label">Đặc điểm sinh học</label>
+                                <textarea class="form-control" id="biology_ecology" rows="3"
+                                    th:field="*{biologyEcology}"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="distribution" class="form-label">Phân bố</label>
+                                <textarea class="form-control" id="distribution" rows="3"
+                                    th:field="*{distribution}"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="protected" class="form-label">Biện pháp bảo vệ</label>
+                                <textarea class="form-control" id="protected" rows="3"
+                                    th:field="*{protective}"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="value" class="form-label">Giá trị</label>
+                                <textarea class="form-control" id="value" rows="3" th:field="*{value}"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label for="document" class="form-label">Nguồn</label>
+                                <textarea class="form-control" id="document" rows="2" th:field="*{document}"></textarea>
+                            </div>
+                            <div class="col">
+                                <label for="status" class="form-label">Trạng thái</label>
+                                <textarea class="form-control" id="status" rows="2" th:field="*{status}"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+
+                </div>
+                <hr>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-2 bg-primary">
+
+        </div>
+
+        <div class="container p-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Nguồn</th>
+                        <th scope="col">Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="item : ${listSpeciesAnimals}">
+                        <th scope="row" th:text="${item.id}">1</th>
+                        <td th:text="${item.name}">Mark</td>
+                        <td class="d-flex align-items-center" th:text="${item.document}">Otto</td>
+                        <td>
+                            <a th:href="@{/edit_species/entity/__${item.id}__}"><i
+                                    class="fa-solid fa-pen-to-square"></i></a>
+                            <button class="delete-button" th:attr="data-entity-id=${item.id}"><i
+                                    class="fa-solid fa-trash" style="color: #fd1717;"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li th:unless="${currentPage == 0}" class="page-item disabled">
+                        <span class="page-link"><a th:href="@{/edit_species?page=__${currentPage - 1}__}"
+                                th:name="page">Previous</a></span>
+                    </li>
+
+                    <li class="page-item" th:each="pageNum : ${#numbers.sequence(0, totalPages)}"
+                        th:classappend=" ${pageNum }==${currentPage } ? 'active' : 'none' ">
+                        <a class="page-link " th:href="@{/edit_species?page=__${pageNum}__}" th:text="${pageNum}"></a>
+                    </li>
+                    <li class="page-item" th:unless="${currentPage + 1 >= totalPages}">
+                        <a class="page-link" th:href="@{/edit_species?page=__${currentPage + 1}__}"
+                            th:name="page">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('.delete-button').click(function () {
+                var entityId = $(this).data('entity-id'); // Trích xuất id từ data-entity-id
+
+                // Hiển thị thông báo xác nhận sử dụng SweetAlert
+                swal({
+                    title: "Xác nhận xóa?",
+                    text: "Bạn có chắc chắn muốn xóa?",
+                    icon: "warning",
+                    buttons: ["Hủy", "Xóa"],
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            // Nếu người dùng xác nhận xóa, gọi Axios để thực hiện xóa entity
+                            $.ajax({
+                                url: '/delete/' + entityId, // Địa chỉ URL của phương thức xóa với id
+                                type: 'POST',
+                                success: function (response) {
+                                    // Xóa node DOM tương ứng
+                                    $(this).closest('tr').hide();
+                                    // Hiển thị thông báo thành công
+                                    swal("Entity đã được xóa thành công.", {
+                                        icon: "success",
+                                    });
+                                }.bind(this), // Sử dụng .bind(this) để giữ nguyên ngữ cảnh
+                                error: function () {
+                                    // Hiển thị thông báo lỗi
+                                    swal("Có lỗi xảy ra khi xóa entity.", {
+                                        icon: "error",
+                                    });
+                                }
+                            });
+                        }
+                    });
+            });
+        });
+    </script>
+
+</body>
+
+</html>

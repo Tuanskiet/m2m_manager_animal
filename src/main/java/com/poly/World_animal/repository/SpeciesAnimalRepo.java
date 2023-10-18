@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface SpeciesAnimalRepo extends JpaRepository<SpeciesAnimal, Integer> {
     List<SpeciesAnimal> findAll();
+
 }

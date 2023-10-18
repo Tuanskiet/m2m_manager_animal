@@ -34,4 +34,9 @@ public class UserAppServiceImpl implements UserAppService {
         userAppRepo.save(userApp);
         return MessageError.USER_REGISTER_SUCCESS;
     }
+
+    @Override
+    public UserApp findByEmailAndPassword(String email, String password) {
+        return userAppRepo.findByEmailAndPassword(email, password).get();
+    }
 }

@@ -5,6 +5,7 @@ import com.poly.World_animal.contansts.MessageError;
 import com.poly.World_animal.dto.UserLoginDto;
 import com.poly.World_animal.entity.UserApp;
 import com.poly.World_animal.service.UserAppService;
+import com.poly.World_animal.utils.SessionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class UserAppController {
 
     private final UserAppService userAppService;
+    private  final SessionService sessionService;
     @GetMapping("/login")
     public String viewPageLogin(Model model){
 //        model.addAttribute("error", "");
@@ -27,8 +29,10 @@ public class UserAppController {
             @ModelAttribute(name = "userLogin")UserLoginDto userLoginDto,
                           Model model){
         String result = userAppService.doLogin(userLoginDto.getUsername(), userLoginDto.getPassword());
+
         if(result.equals("OK")){
-            return "/user/index";
+            sessionService.set("userLogin",userAppService.findByEmailAndPassword(userLoginDto.getUsername(), userLoginDto.getPassword()));
+            return "redirect:/index";
         }
         model.addAttribute("userLogin", userLoginDto);
         model.addAttribute("error", result);

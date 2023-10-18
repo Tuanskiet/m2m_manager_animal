@@ -22,6 +22,11 @@
   <link rel="stylesheet" th:href="@{user/css/style.css}" type="text/css">
   <link rel="stylesheet" th:href="@{user/css/common.css}" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+          crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -118,7 +123,18 @@
                 </ul>
               </div>
               <div class="header__top__right__auth">
-                <a th:href="@{/login}"><i class="fa-regular fa-user"></i> Login</a>
+                <a th:unless="${userLogin}" th:href="@{/login}"><i class="fa-regular fa-user"></i> Login1</a>
+
+                <div class="header__top__right__language" th:if="${userLogin} ">
+                  <div><span th:text="'Hello '+ ${userLogin.fullName} "></span></div>
+                  <span class="arrow_carrot-down"></span>
+                  <ul>
+                    <li><a href="#">Infor</a></li>
+                    <li><a href="#">Log Out</a></li>
+                  </ul>
+                </div>
+
+
               </div>
             </div>
           </div>
@@ -136,7 +152,7 @@
           <nav class="header__menu">
             <ul>
               <li class="active"><a th:href="@{/}">Home</a></li>
-              <li><a href="./shop-grid.html">Shop</a></li>
+              <li><a th:href="@{/uploadfile}">Shop</a></li>
               <li><a href="#">Pages</a>
                 <ul class="header__menu__dropdown">
                   <li><a th:href="@{/details}">Shop Details</a></li>
@@ -146,7 +162,7 @@
                 </ul>
               </li>
               <li><a th:href="@{/blog}" >Blog</a></li>
-              <li><a th:href="@{/contact}">Contact</a></li>
+              <li><a th:href="@{/edit_species}">Admin</a></li>
             </ul>
           </nav>
         </div>
